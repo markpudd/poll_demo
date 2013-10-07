@@ -3,6 +3,10 @@ require 'net/http'
 class ForceSessionController < ApplicationController
  
   def authorize
+
+
+    
+    
     uri = URI.parse("https://login.salesforce.com")
     http = Net::HTTP.new(uri.host, uri.port)
     http.use_ssl = true
