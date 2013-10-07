@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130929232558) do
+ActiveRecord::Schema.define(:version => 20131007073716) do
 
   create_table "answers", :force => true do |t|
     t.string   "answer_text"
@@ -21,6 +21,13 @@ ActiveRecord::Schema.define(:version => 20130929232558) do
   end
 
   add_index "answers", ["poll_id"], :name => "index_answers_on_poll_id"
+
+  create_table "env_configs", :force => true do |t|
+    t.string   "name"
+    t.string   "value"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "players", :force => true do |t|
     t.string   "name"
