@@ -11,13 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131007083101) do
+ActiveRecord::Schema.define(:version => 20131007085358) do
 
   create_table "answers", :force => true do |t|
     t.string   "answer_text"
     t.integer  "poll_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.string   "sfid"
   end
 
   add_index "answers", ["poll_id"], :name => "index_answers_on_poll_id"
