@@ -1,0 +1,85 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require_tree .
+ */
+
+html,
+body {
+min-height: 100%;
+}
+
+ul {margin: 0; padding: 0;}
+ul li {display:inline; margin:0 10px 0 10px; padding: 0;}
+ul li a {border-left:8px solid white; text-decoration:none; padding:0;}
+
+
+.quest {
+	margin: 50px 20px 20px 20px;
+	line-height:200%
+	
+}
+
+body {
+margin: 0 0 0 0;
+padding: 0 0 0 0;
+width: 100%;
+min-height: 100%;
+background: #ffffff; /* Old browsers */
+background: -moz-linear-gradient(top,  #ffffff 0%, #cecece 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#cecece)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  #ffffff 0%,#cecece 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  #ffffff 0%,#cecece 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  #ffffff 0%,#cecece 100%); /* IE10+ */
+background: linear-gradient(to bottom,  #ffffff 0%,#cecece 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#cecece',GradientType=0 ); /* IE6-9 */
+text-align:center; /* center horizontally */
+
+}
+
+/***FIRST STYLE THE BUTTON***/
+.votebutton {
+width: 200px;
+cursor: pointer; /*forces the cursor to change to a hand when the button is hovered*/
+padding:5px 25px; /*add some padding to the inside of the button*/
+background: #00c19e; /* Old browsers */
+background: -moz-linear-gradient(top,  #00c19e 0%, #009e86 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#00c19e), color-stop(100%,#009e86)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  #00c19e 0%,#009e86 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  #00c19e 0%,#009e86 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  #00c19e 0%,#009e86 100%); /* IE10+ */
+background: linear-gradient(to bottom,  #00c19e 0%,#009e86 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00c19e', endColorstr='#009e86',GradientType=0 ); /* IE6-9 */
+
+
+
+border:1px solid #33842a; /*required or the default border for the browser will appear*/
+/*give the button curved corners, alter the size as required*/
+-moz-border-radius: 4px;
+-webkit-border-radius: 4px;
+border-radius: 4px;
+/*give the button a drop shadow*/
+-webkit-box-shadow: 1px 1px 1px rgba(0,0,0, .5);
+-moz-box-shadow: 1px 1px 1px rgba(0,0,0, .5);
+box-shadow: 1px 1px 1px rgba(0,0,0, .5);
+/*style the text*/
+color:#f3f3f3;
+font-size: 1.2em;
+font-weight:bold;
+}
+/***NOW STYLE THE BUTTON'S HOVER AND FOCUS STATES***/
+input#gobutton:hover, input#gobutton:focus {
+background-color :#399630; /*make the background a little darker*/
+/*reduce the drop shadow size to give a pushed button effect*/
+-webkit-box-shadow: 0 0 1px rgba(0,0,0, .75);
+-moz-box-shadow: 0 0 1px rgba(0,0,0, .75);
+box-shadow: 0 0 1px rgba(0,0,0, .75);
+}

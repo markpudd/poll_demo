@@ -1,0 +1,16 @@
+<p id="notice"><%= notice %></p>
+
+<div class='quest'>
+<h2>
+  <%= @poll.question %>
+</h2>
+
+<ul>
+<% @poll.answers.each do |ans| %>
+<li><%= button_to ans.answer_text, {:controller => "votes", :action => "create", :answer => ans.id}, :method=>:post, :class => 'votebutton'  %></li>
+<% end %>	
+	
+</ul>
+</div>
+
+
