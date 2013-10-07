@@ -3,7 +3,7 @@ Polls::Application.routes.draw do
   root :to => 'polls#index'
   
   get "force_sessions/create"
-  get "sfdcauth", to: 'force_sessions#authorize'  
+  get "sfdcauth", to: 'force_session#authorize'  
   
   resources :votes
 
