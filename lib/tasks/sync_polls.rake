@@ -58,6 +58,7 @@ task :sync_polls => :environment do
         a.sfid = answer_h['Id']
       #  a.order = answer_h['moroku__Sequence__c']
         a.answer_text =answer_h['Answer_Text__c'];
+        a.poll = poll
         a.save
       end
     end
