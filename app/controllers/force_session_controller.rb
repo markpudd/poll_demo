@@ -1,3 +1,5 @@
+require 'net/http'
+
 class ForceSessionController < ApplicationController
  
   def authorize
