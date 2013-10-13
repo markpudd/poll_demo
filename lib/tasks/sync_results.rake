@@ -22,5 +22,5 @@ task :sync_results => :environment do
       records_to_upsert.push(sf_data)
   end
 
-    job = salesforce.upsert("Poll_Result__c", records_to_upsert, "Source_Id__c") # Note that upsert accepts an extra parameter for the external field name
+    job = salesforce.insert("Poll_Result__c", records_to_upsert, "Source_Id__c") # Note that upsert accepts an extra parameter for the external field name
 end
