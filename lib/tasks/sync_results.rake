@@ -15,7 +15,8 @@ task :sync_results => :environment do
     
     sf_data = {
       "Answer__r" => {"Id__c" => answer.sfid.to_s},
-      "Votes__c" => answer.votes.count
+      "Votes__c" => answer.votes.count,
+      "Source__Id_c" => answer.id.to_s
     }
 
       records_to_upsert.push(sf_data)
