@@ -7,7 +7,7 @@
 
 <ul>
 <% @poll.answers.each do |ans| %>
-<li><%= button_to ans.answer_text, {:controller => "votes", :action => "create", :answer => ans.id}, :method=>:post, :class => 'votebutton'  %></li>
+<li><%= button_to ans.answer_text, {:controller => "votes", :action => "create", :answer_id => ans.id}, :method=>:post, :class => 'votebutton'  %></li>
 <% end %>	
 	
 </ul>
