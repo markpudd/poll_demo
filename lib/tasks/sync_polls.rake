@@ -27,8 +27,10 @@ task :sync_polls => :environment do
 	  request.body = "grant_type=refresh_token&client_id=#{crypt.decrypt_and_verify(EnvConfig.where(name: 'SF_CLIENT_ID').first.value)}&
 				  client_secret=#{crypt.decrypt_and_verify(EnvConfig.where(name: 'SF_CLIENT_SECRET').first.value)}&
 				  refresh_token=#{crypt.decrypt_and_verify(EnvConfig.where(name: 'SF_REFRESH_TOKEN').first.value)}"
-
+    puts request.body
 	  response = http.request(request)
+	  puts response
+    
 	  response_data = JSON.parse(response.body)
 	
 	 
