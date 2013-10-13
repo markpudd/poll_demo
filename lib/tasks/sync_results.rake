@@ -14,9 +14,9 @@ task :sync_results => :environment do
   Answer.all.each do |answer|
     
     sf_data = {
-      "Source__Id_c" => answer.id
+      "Source__Id_c" => answer.id,
       "Answer__r" => {"Source__Id_c" => answer.id.to_s},
-      "Votes__c" => answer.votes.count,
+      "Votes__c" => answer.votes.count
 
     }
 
