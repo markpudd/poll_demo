@@ -25,4 +25,5 @@ task :sync_results => :environment do
   puts "Syncing "+records_to_upsert.count.to_s+" records"
 
     job = salesforce.upsert("Poll_Result__c", records_to_upsert, "Source_Id__c") # Note that upsert accepts an extra parameter for the external field name
+    puts job
 end
