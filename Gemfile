@@ -28,6 +28,11 @@ gem 'authlogic'
 gem 'jquery-rails'
 
 gem 'httparty'
+
+gem 'salesforce_bulk_api', :git => "https://github.com/markmoro/salesforce_bulk_api.git"
+
+gem 'databasedotcom'
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
