@@ -36,7 +36,7 @@ task :sync_polls => :environment do
   access_token =  crypt.decrypt_and_verify(EnvConfig.where(name: 'SF_ACCESS_TOKEN').first.value)
   instance_url = crypt.decrypt_and_verify(EnvConfig.where(name: 'SF_INSTANCE_URL').first.value)
   
-  qs = {'q' =>'SELECT Id,Name, Poll_Text__c,(SELECT Id, Answer_Text__c, Sequence__c FROM Answers__r)  FROM Poll__c'}
+  qs = {'q' =>'SELECT Id,Name, Poll_Text__c,(SELECT Answer_Ext_Id__c, Answer_Text__c, Sequence__c FROM Answers__r)  FROM Poll__c'}
 
   request = HTTParty.get('https://ap1.salesforce.com/services/data/v20.0/query', :query => qs,
              :headers => {'Content-type' => 'application/json',
@@ -55,7 +55,7 @@ task :sync_polls => :environment do
   
   
   puts data
-  puts request
+
   request['records'].each do | record |
     
     poll = Poll.find_by_sfid(record['Id'])
@@ -66,10 +66,10 @@ task :sync_polls => :environment do
 
     if record['Answers__r']
       record['Answers__r']['records'].each do | answer_h |
-        a = Answer.find_by_sfid(answer_h['Id'])
+        a = Answer.find_by_sfid(answer_h['Answer_Ext_Id__c'])
         a = Answer.new if !a
       
-        a.sfid = answer_h['Id']
+        a.sfid = answer_h['Answer_Ext_Id__c']
       #  a.order = answer_h['moroku__Sequence__c']
         a.answer_text =answer_h['Answer_Text__c'];
         a.poll = poll

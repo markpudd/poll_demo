@@ -45,8 +45,8 @@ task :sync_results => :environment do
   Answer.all.each do |answer|
     
     sf_data = {
-      "Source__Id_c" => answer.id,
-      "Answer__r" => {"Source__Id_c" => answer.id.to_s},
+      "Source_Id__c" => answer.id.to_s,
+      "Answer__r" => {"Answer_Ext_Id__c" => answer.sfid},
       "Votes__c" => answer.votes.count
     }
 
@@ -54,6 +54,7 @@ task :sync_results => :environment do
   end
   puts "Syncing "+records_to_upsert.count.to_s+" records"
 
+puts records_to_upsert
   begin
     job = salesforce.upsert("Poll_Result__c", records_to_upsert, "Source_Id__c") # Note that upsert accepts an extra parameter for the external field name
   rescue
@@ -64,4 +65,5 @@ task :sync_results => :environment do
       job = salesforce.upsert("Poll_Result__c", records_to_upsert, "Source_Id__c") 
     end
   end
+  puts job
 end
