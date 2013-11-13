@@ -1,33 +1,6 @@
 require 'salesforce_bulk_api'
+require "#{Rails.root}/lib/tasks/refresh"
 
-def refresh_token
-  puts "refreshing token"
-  crypt = ActiveSupport::MessageEncryptor.new(ENV['DB_TOKEN'])
-  uri = URI.parse("https://login.salesforce.com")
-  http = Net::HTTP.new(uri.host, uri.port)
-  http.use_ssl = true
-  http.verify_mode = OpenSSL::SSL::VERIFY_NONE
-  request = Net::HTTP::Post.new('/services/oauth2/token')
-  request.add_field('Content-Type', 'application/x-www-form-urlencoded')
-
-  request.body = "grant_type=refresh_token&client_id=#{crypt.decrypt_and_verify(EnvConfig.where(name: 'SF_CLIENT_ID').first.value)}&client_secret=#{crypt.decrypt_and_verify(EnvConfig.where(name: 'SF_CLIENT_SECRET').first.value)}&refresh_token=#{crypt.decrypt_and_verify(EnvConfig.where(name: 'SF_REFRESH_TOKEN').first.value)}"
-
-  response = http.request(request)
-  response_data = JSON.parse(response.body)
-
-  access_token = response_data['access_token']
-  if access_token
-    config = EnvConfig.where(name: "SF_ACCESS_TOKEN").first
-    if !config
-      config = EnvConfig.new
-      config.name = "SF_ACCESS_TOKEN"
-    end
-    config.value = crypt.encrypt_and_sign(access_token)
-    config.save
-  end
-  
-  access_token
-end
 
 
 
